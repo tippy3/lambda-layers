@@ -1,0 +1,31 @@
+name: Create Layer
+
+on:
+  workflow_dispatch:
+    inputs:
+      directory:
+        description: directory
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  create_layer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: ${{ inputs.directory }}/.python-version
+
+      - name: echo version
+        working-directory: ${{ inputs.directory }}
+        run: |
+          python --version
