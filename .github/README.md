@@ -1,3 +1,3 @@
-# AWS Lambda Layers
+# My Lambda Layers
 
-Create my Lambda layers by GitHub Actions.
+Create my Lambda layers by GitHub actions.
