@@ -19,6 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           sparse-checkout: |
             ${{ inputs.directory }}
             create-layer.sh
@@ -27,7 +28,12 @@ jobs:
         with:
           python-version-file: ${{ inputs.directory }}/.python-version
 
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/tippy3-lambda-layers-github-actions
+
       - name: echo version
         working-directory: ${{ inputs.directory }}
         run: |
-          python --version
+          ../create-layer.sh
