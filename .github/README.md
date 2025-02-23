@@ -1,3 +1,3 @@
 # My Lambda Layers
 
-Create my Lambda layers by GitHub actions.
+自分用のLambdaレイヤー
