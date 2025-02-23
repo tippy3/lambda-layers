@@ -31,7 +31,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ap-northeast-1
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/tippy3-lambda-layers-github-actions
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
 
       - name: echo version
         working-directory: ${{ inputs.directory }}
